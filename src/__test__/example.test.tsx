@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Home from '@/app/page'
 import '@testing-library/jest-dom'
+import { renderWithStore } from './utils/renderWithStore'
 
 // mocking useRouter
 jest.mock('next/router', () => ({
@@ -13,8 +14,7 @@ jest.mock('next/router', () => ({
 
 describe('Home', () => {
   it('renders top page', () => {
-    // FIXME:
-    render(<Home />)
+    renderWithStore(<Home />, {})
     const initialTest = screen.getByText(/project start!/i)
 
     expect(initialTest).toBeInTheDocument()
