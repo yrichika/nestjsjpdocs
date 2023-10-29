@@ -1,6 +1,5 @@
 'use client'
 import Image from 'next/image'
-import styles from './page.module.css'
 import {
   useSelector,
   useDispatch,
@@ -8,13 +7,21 @@ import {
   increment,
   decrement,
 } from '@/lib/redux'
+import { GetServerSideProps } from 'next'
+import { useEffect } from 'react'
+import { redirect } from 'next/navigation'
 
 export default function Home() {
+  // TODO: とりあえず最初はリダイレクトにしておく
+  // useEffect(() => {
+  //   redirect('/v10')
+  // }, [])
+  // DELETE: ただのサンプルコードなので後で削除
   const count = useSelector(selectCount)
   const dispatch = useDispatch()
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main>
+      <div>
         <span id="init">project start!</span>
         <div>
           <p>counter: {count}</p>
