@@ -18,8 +18,11 @@ export default function tocItems(): TocItem[] {
     {
       section: 'FUNDAMENTALS',
       documents: [
-        { title: 'Custom providers', url: 'custom-providers' },
-        { title: 'Asynchronous providers', url: 'asynchronous-providers' },
+        { title: 'Custom providers', url: 'fundamentals/custom-providers' },
+        {
+          title: 'Asynchronous providers',
+          url: 'fundamentals/asynchronous-providers',
+        },
       ],
     },
   ]

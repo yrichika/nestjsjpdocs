@@ -6,6 +6,8 @@
 
 - Next.js: App Router
 - MUI
+- Prism.js
+- SASS
 - Testing Library
 - Redux Toolkit
 

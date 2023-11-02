@@ -1,3 +1,4 @@
+'use client'
 import V10PageTemplate from '@/components/templates/V10PageTemplate'
 
 function ProvidersPage() {

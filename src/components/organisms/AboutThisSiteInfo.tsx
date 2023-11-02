@@ -1,6 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Button, Card, CardContent, Grid, Link } from '@mui/material'
+import { Box, Button, Card, CardContent, Grid } from '@mui/material'
 import { useState } from 'react'
+import YrichikaXLink from '../atoms/YrichikaXLink'
 
 type DisplayState = 'block' | 'none'
 
@@ -21,13 +22,7 @@ function AboutThisSiteInfo() {
         </Grid>
         <CardContent style={{ paddingTop: 0 }}>
           NestJS非公式の翻訳サイトです。
-          <Link
-            href="https://twitter.com/yrichika"
-            target="_blank"
-            rel="noopener"
-          >
-            @yrichika
-          </Link>
+          <YrichikaXLink />
           が個人で勝手に翻訳して公開しています。
         </CardContent>
       </Card>

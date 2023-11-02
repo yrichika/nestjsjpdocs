@@ -1,12 +1,15 @@
 'use client'
+import YrichikaXLink from '@/components/atoms/YrichikaXLink'
 import TocNavigation from '@/components/molecules/TocNavigation'
 import AboutThisSiteInfo from '@/components/organisms/AboutThisSiteInfo'
 import MenuBar from '@/components/organisms/MenuBar'
+import { responsiveTheme } from '@/styles/theme'
+import { ThemeProvider } from '@emotion/react'
 import { Box, Grid } from '@mui/material'
 
 function V10Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <ThemeProvider theme={responsiveTheme}>
       <MenuBar versionPrefix="v10" />
       <main style={{ marginTop: '15px' }}>
         <AboutThisSiteInfo />
@@ -22,7 +25,18 @@ function V10Layout({ children }: { children: React.ReactNode }) {
           {children}
         </Grid>
       </main>
-    </>
+      <footer style={{ marginTop: '40px', marginBottom: '100px' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          Copyright &copy; 2023 <YrichikaXLink />
+        </Box>
+      </footer>
+    </ThemeProvider>
   )
 }
 

@@ -17,7 +17,7 @@ function ListOfContents({ listOfContents }: Props) {
       <List>
         {listOfContents.map((item, key) => {
           return (
-            <ListItem key={key} style={{ padding: 0, marginTop: '10px' }}>
+            <ListItem key={key} style={{ padding: 0, marginTop: '15px' }}>
               <Link href={currentPathPrefix + item.id} underline="none">
                 {item.title}
               </Link>
