@@ -59,7 +59,8 @@ function Introduction() {
         <p>
           Nest はこれら一般的な Node.js
           フレームワーク（Express/Fastify）を抽象化したものを提供し、
-          APIを公開しています。これにより、無数のサードパーティモジュールを、基盤となるプラットフォーム向けに使用できます。
+          APIを公開しています。これにより、無数のサードパーティモジュールを、基盤のプラットフォーム(Express,
+          Fastifyなど)向けに使用できます。
         </p>
       </Box>
       <Box sx={{ mt: 5 }}>
@@ -96,9 +97,7 @@ function Introduction() {
           次のステップの<Link href="v10/first-steps">First Steps</Link>
           では、この方法での解説になります。
         </p>
-        <CodeBlock language={installSnippet.lang}>
-          {installSnippet.code}
-        </CodeBlock>
+        <CodeBlock lang={installSnippet.lang}>{installSnippet.code}</CodeBlock>
         <Hint>
           新しいプロジェクトをより厳格なTypeScriptの型チェック設定で作成するには、
           <CodeSpan>nest new</CodeSpan>コマンドに<CodeSpan>--strict</CodeSpan>
@@ -113,7 +112,7 @@ function Introduction() {
           <CodeSpan>nest new</CodeSpan>
           とは別の、TypeScriptのテンプレートプロジェクトをGitでインストールする方法です。
         </p>
-        <CodeBlock language={installWithGitSnippet.lang}>
+        <CodeBlock lang={installWithGitSnippet.lang}>
           {installWithGitSnippet.code}
         </CodeBlock>
         <Hint>
@@ -138,7 +137,7 @@ function Introduction() {
           ゼロから新しいプロジェクトを作成することもできます。
           この場合、プロジェクトの基本となる構成ファイルは、自身で作成する必要があります。
         </p>
-        <CodeBlock language={installManuallySnippet.lang}>
+        <CodeBlock lang={installManuallySnippet.lang}>
           {installManuallySnippet.code}
         </CodeBlock>
       </Box>
