@@ -1,8 +1,8 @@
 import { JsCodeSnippet, TsCodeSnippet } from '@/types/CodeSnippet'
 import { Box, Button, Grid } from '@mui/material'
 import { useState } from 'react'
-import CodeBlock from './CodeBlock'
-import CodeSpan from './CodeSpan'
+import CodeBlock from '../atoms/CodeBlock'
+import CodeSpan from '../atoms/CodeSpan'
 
 type Props = {
   tsSnippet: TsCodeSnippet
