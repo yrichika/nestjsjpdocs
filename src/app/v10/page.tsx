@@ -11,7 +11,7 @@ import 'prismjs/components/prism-typescript'
 import CodeSpan from '@/components/atoms/CodeSpan'
 import ExternalLink from '@/components/atoms/ExternalLink'
 import Heading from '@/components/atoms/Heading'
-import Hint from '@/components/atoms/Hint'
+import Hint from '@/components/molecules/Hint'
 import { useEffect } from 'react'
 import {
   installManuallySnippet,

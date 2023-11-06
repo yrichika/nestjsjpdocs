@@ -5,8 +5,8 @@ import CodeSpan from '@/components/atoms/CodeSpan'
 import ExternalLink from '@/components/atoms/ExternalLink'
 import FileTree from '@/components/atoms/FileTree'
 import Heading from '@/components/atoms/Heading'
-import Hint from '@/components/atoms/Hint'
 import Hl from '@/components/atoms/Hl'
+import Hint from '@/components/molecules/Hint'
 import ToggleCodeBlock from '@/components/molecules/ToggleCodeBlock'
 import V10PageTemplate from '@/components/templates/V10PageTemplate'
 import { Box, Link } from '@mui/material'
@@ -17,7 +17,7 @@ import 'prismjs/components/prism-typescript'
 import { useEffect } from 'react'
 import TableBaseFileDescriptions from './TableBaseFileDescriptions'
 import TablePlatforms from './TablePlatforms'
-import listOfContents from './listOfContents'
+import { listOfContents } from './listOfContents'
 import {
   createAppSnippet,
   installSnippet,
@@ -29,16 +29,15 @@ import {
 } from './snippets'
 
 function FirstStepsPage() {
-  const contentsHeadings = listOfContents()
   const originalLink = 'https://docs.nestjs.com/first-steps'
   useEffect(() => {
     Prism.highlightAll()
   }, [])
   return (
-    <V10PageTemplate listOfContents={contentsHeadings}>
+    <V10PageTemplate listOfContents={listOfContents}>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[0].id} variant="h1">
-          {contentsHeadings[0].title}
+        <Heading id={listOfContents[0].id} variant="h1">
+          {listOfContents[0].title}
         </Heading>
         <p>
           この記事では、Nestの基本 (<b>core fundamentals</b>)を学びます。
@@ -46,8 +45,8 @@ function FirstStepsPage() {
         </p>
       </Box>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[1].id} variant="h2">
-          {contentsHeadings[1].title}
+        <Heading id={listOfContents[1].id} variant="h2">
+          {listOfContents[1].title}
         </Heading>
         <p>
           NestはTypeScriptと純粋なJavaScriptの両方と互換性があります。
@@ -58,8 +57,8 @@ function FirstStepsPage() {
         </p>
       </Box>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[2].id} variant="h2">
-          {contentsHeadings[2].title}
+        <Heading id={listOfContents[2].id} variant="h2">
+          {listOfContents[2].title}
         </Heading>
       </Box>
       <p>
@@ -67,8 +66,8 @@ function FirstStepsPage() {
         (version&gt;=16)をインストールしておいて下さい。
       </p>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[3].id} variant="h2">
-          {contentsHeadings[3].title}
+        <Heading id={listOfContents[3].id} variant="h2">
+          {listOfContents[3].title}
         </Heading>
         <p>
           <Hl>Nest CLI</Hl>
@@ -143,8 +142,8 @@ function FirstStepsPage() {
         </Hint>
       </Box>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[4].id} variant="h2">
-          {contentsHeadings[4].title}
+        <Heading id={listOfContents[4].id} variant="h2">
+          {listOfContents[4].title}
         </Heading>
         <p>
           Nestはプラットフォームに依存しないフレームワークを目指しています。
@@ -176,8 +175,8 @@ function FirstStepsPage() {
         </CodeBlock>
       </Box>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[5].id} variant="h2">
-          {contentsHeadings[5].title}
+        <Heading id={listOfContents[5].id} variant="h2">
+          {listOfContents[5].title}
         </Heading>
         <p>
           インストールが完了したら、次のコマンドをOSのコマンドプロンプトで実行して下さい。
@@ -215,8 +214,8 @@ function FirstStepsPage() {
         </p>
       </Box>
       <Box sx={{ mt: 5 }}>
-        <Heading id={contentsHeadings[6].id} variant="h2">
-          {contentsHeadings[6].title}
+        <Heading id={listOfContents[6].id} variant="h2">
+          {listOfContents[6].title}
         </Heading>
         <p>
           CLIは、規模が大きく、信頼性のある開発ワークフローを実現するために、できる限りのサポートを行います。

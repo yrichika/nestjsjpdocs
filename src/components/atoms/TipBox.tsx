@@ -1,8 +1,13 @@
-import { Card, CardContent, Typography, useTheme } from '@mui/material'
+import { Card, CardContent, Typography } from '@mui/material'
 import { ReactNode } from 'react'
 
-function Hint({ children }: { children: ReactNode }) {
-  const theme2ndColor = useTheme().palette.secondary.main
+type Props = {
+  children: ReactNode
+  color: string
+  heading: string
+}
+
+function Hint({ children, color, heading }: Props) {
   const cardContentStyle = {
     padding: '5px 15px 0px 15px',
     // MUIのCardにデフォルトでついている余計なpaddingを減らす
@@ -14,11 +19,8 @@ function Hint({ children }: { children: ReactNode }) {
   return (
     <Card variant="outlined">
       <CardContent sx={cardContentStyle}>
-        <Typography
-          sx={{ fontSize: 16, fontWeight: 'bold' }}
-          color={theme2ndColor}
-        >
-          Hint
+        <Typography sx={{ fontSize: 16, fontWeight: 'bold' }} color={color}>
+          {heading}
         </Typography>
         <Typography variant="body2">{children}</Typography>
       </CardContent>
