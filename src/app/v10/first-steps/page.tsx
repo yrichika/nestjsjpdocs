@@ -6,6 +6,8 @@ import ExternalLink from '@/components/atoms/ExternalLink'
 import FileTree from '@/components/atoms/FileTree'
 import Heading from '@/components/atoms/Heading'
 import Hl from '@/components/atoms/Hl'
+import PageFooter from '@/components/atoms/PageFooter'
+import Section from '@/components/atoms/Section'
 import Hint from '@/components/molecules/Hint'
 import ToggleCodeBlock from '@/components/molecules/ToggleCodeBlock'
 import V10PageTemplate from '@/components/templates/V10PageTemplate'
@@ -35,7 +37,7 @@ function FirstStepsPage() {
   }, [])
   return (
     <V10PageTemplate listOfContents={listOfContents}>
-      <Box sx={{ mt: 5 }}>
+      <Section>
         <Heading id={listOfContents[0].id} variant="h1">
           {listOfContents[0].title}
         </Heading>
@@ -43,8 +45,8 @@ function FirstStepsPage() {
           この記事では、Nestの基本 (<b>core fundamentals</b>)を学びます。
           Nestアプリケーションの基本的な構成要素に慣れるために、基本的なCRUDアプリケーションを構築しながら、初心者向けに、多くの領域をカバーする機能を紹介します。
         </p>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id={listOfContents[1].id} variant="h2">
           {listOfContents[1].title}
         </Heading>
@@ -55,17 +57,17 @@ function FirstStepsPage() {
         <p>
           このドキュメントで説明する例では、主にTypeScriptを使用しますが、コードスニペットをいつでも純粋なJavaScript構文に切り替えることができます（各スニペットの右上隅にある言語ボタンをクリックして言語を切り替えてください）。
         </p>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id={listOfContents[2].id} variant="h2">
           {listOfContents[2].title}
         </Heading>
-      </Box>
+      </Section>
       <p>
         事前にOSに<Hl>Node.js</Hl>
         (version&gt;=16)をインストールしておいて下さい。
       </p>
-      <Box sx={{ mt: 5 }}>
+      <Section>
         <Heading id={listOfContents[3].id} variant="h2">
           {listOfContents[3].title}
         </Heading>
@@ -140,8 +142,8 @@ function FirstStepsPage() {
             {`NestFactory.create(AppModule, { abortOnError: false })`}
           </CodeSpan>
         </Hint>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id={listOfContents[4].id} variant="h2">
           {listOfContents[4].title}
         </Heading>
@@ -173,8 +175,8 @@ function FirstStepsPage() {
         <CodeBlock lang={createAppSnippet.lang}>
           {createAppSnippet.code}
         </CodeBlock>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id={listOfContents[5].id} variant="h2">
           {listOfContents[5].title}
         </Heading>
@@ -212,8 +214,8 @@ function FirstStepsPage() {
           このコマンドによって、ファイルの変更に伴い、自動的にコードが再コンパイルされ、
           サーバーが更新されます。
         </p>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id={listOfContents[6].id} variant="h2">
           {listOfContents[6].title}
         </Heading>
@@ -251,11 +253,11 @@ function FirstStepsPage() {
           スクリプトを用意しています。
         </p>
         <CodeBlock lang={lintSnippet.lang}>{lintSnippet.code}</CodeBlock>
-      </Box>
-      <Box sx={{ display: 'flex', mt: 7, justifyContent: 'center' }}>
+      </Section>
+      <PageFooter>
         Translated from{' '}
         <ExternalLink href={originalLink}>{originalLink}</ExternalLink>
-      </Box>
+      </PageFooter>
     </V10PageTemplate>
   )
 }

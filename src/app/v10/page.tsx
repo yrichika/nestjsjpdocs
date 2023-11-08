@@ -3,7 +3,7 @@
 import CodeBlock from '@/components/atoms/CodeBlock'
 import Hl from '@/components/atoms/Hl'
 import V10PageTemplate from '@/components/templates/V10PageTemplate'
-import { Box, Link } from '@mui/material'
+import { Link } from '@mui/material'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-bash'
 import 'prismjs/components/prism-typescript'
@@ -11,6 +11,8 @@ import 'prismjs/components/prism-typescript'
 import CodeSpan from '@/components/atoms/CodeSpan'
 import ExternalLink from '@/components/atoms/ExternalLink'
 import Heading from '@/components/atoms/Heading'
+import PageFooter from '@/components/atoms/PageFooter'
+import Section from '@/components/atoms/Section'
 import Hint from '@/components/molecules/Hint'
 import { useEffect } from 'react'
 import {
@@ -36,7 +38,7 @@ function Introduction() {
 
   return (
     <V10PageTemplate listOfContents={listOfContents}>
-      <Box>
+      <Section>
         <Heading id="introduction" variant="h1">
           Introduction
         </Heading>
@@ -62,8 +64,8 @@ function Introduction() {
           APIを公開しています。これにより、無数のサードパーティモジュールを、基盤のプラットフォーム(Express,
           Fastifyなど)向けに使用できます。
         </p>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id="philosophy" variant="h2">
           Philosophy
         </Heading>
@@ -81,8 +83,8 @@ function Introduction() {
           <b>アーキテクチャ</b>を提供します。
           このアーキテクチャはAngularから多くのインスピレーションを受けています。
         </p>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id="installation" variant="h2">
           Installation
         </Heading>
@@ -103,8 +105,8 @@ function Introduction() {
           <CodeSpan>nest new</CodeSpan>コマンドに<CodeSpan>--strict</CodeSpan>
           フラグを渡します。
         </Hint>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <Heading id="alternatives" variant="h2">
           Alternatives
         </Heading>
@@ -120,8 +122,8 @@ function Introduction() {
           <ExternalLink href={degitLink}>degit</ExternalLink>{' '}
           を使用してください。
         </Hint>
-      </Box>
-      <Box sx={{ mt: 5 }}>
+      </Section>
+      <Section>
         <p>
           ブラウザを開いて、
           <ExternalLink href={localhostLink}>{localhostLink}</ExternalLink>
@@ -140,11 +142,11 @@ function Introduction() {
         <CodeBlock lang={installManuallySnippet.lang}>
           {installManuallySnippet.code}
         </CodeBlock>
-      </Box>
-      <Box sx={{ display: 'flex', mt: 7, justifyContent: 'center' }}>
+      </Section>
+      <PageFooter>
         Translated from{' '}
         <ExternalLink href={originalLink}>{originalLink}</ExternalLink>
-      </Box>
+      </PageFooter>
     </V10PageTemplate>
   )
 }

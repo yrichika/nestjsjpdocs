@@ -7,7 +7,7 @@ type Props = {
   heading: string
 }
 
-function Hint({ children, color, heading }: Props) {
+function TipBox({ children, color, heading }: Props) {
   const cardContentStyle = {
     padding: '5px 15px 0px 15px',
     // MUIのCardにデフォルトでついている余計なpaddingを減らす
@@ -28,4 +28,4 @@ function Hint({ children, color, heading }: Props) {
   )
 }
 
-export default Hint
+export default TipBox

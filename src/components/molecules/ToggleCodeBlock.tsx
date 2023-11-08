@@ -35,7 +35,7 @@ function ToggleCodeBlock({ tsSnippet, jsSnippet }: Props) {
             onClick={toggle}
             sx={{ m: 0, minWidth: 0 }}
           >
-            {isTs ? 'TS' : 'JS'}
+            {isTs ? 'JS' : 'TS'}
           </Button>
         </Grid>
       </Grid>
