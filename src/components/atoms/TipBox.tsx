@@ -17,12 +17,14 @@ function TipBox({ children, color, heading }: Props) {
   }
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{ margin: '30px 0' }}>
       <CardContent sx={cardContentStyle}>
         <Typography sx={{ fontSize: 16, fontWeight: 'bold' }} color={color}>
           {heading}
         </Typography>
-        <Typography variant="body2">{children}</Typography>
+        <Typography variant="body2" lineHeight={1.9}>
+          {children}
+        </Typography>
       </CardContent>
     </Card>
   )

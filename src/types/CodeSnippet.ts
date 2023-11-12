@@ -1,4 +1,10 @@
-export type Language = 'shell' | 'javascript' | 'typescript' | 'typoscript'
+export type Language =
+  | 'shell'
+  | 'javascript'
+  | 'js'
+  | 'typescript'
+  | 'ts'
+  | 'typoscript'
 
 export type CodeSnippet = {
   lang: Language
@@ -7,9 +13,9 @@ export type CodeSnippet = {
 }
 
 export type TsCodeSnippet = CodeSnippet & {
-  lang: 'typescript'
+  lang: 'typescript' | 'ts'
 }
 
 export type JsCodeSnippet = CodeSnippet & {
-  lang: 'javascript'
+  lang: 'javascript' | 'js'
 }

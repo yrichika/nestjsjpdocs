@@ -1,8 +1,8 @@
 /* Core */
-import { configureStore, type ThunkAction, type Action } from '@reduxjs/toolkit'
+import { configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit'
 import {
-  useSelector as useReduxSelector,
   useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
   type TypedUseSelectorHook,
 } from 'react-redux'
 

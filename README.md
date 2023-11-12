@@ -31,3 +31,24 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## 個人メモについて
 
 `MEMO.md`と`TODO.md`が`.gitignore`に含まれているため、このプロジェクト用に個人的なメモをつけたい場合はそれらのファイルを作成して使ってください。
+
+
+## ややこしい単語の扱い
+
+### route, path, route path, routingなど
+
+基本的には、意味が同じなら「パス」に共通化して翻訳しています。
+
+### handler
+
+「ハンドラ」と訳していますが、意味は処理、具体的にはメソッドのことです。
+
+#### handler signature
+
+要はメソッドの引数のことです
+
+### expose ...
+
+"expose the interface" などの表現は、「インターフェースに直接アクセスできる状態」というような表現で訳しています。
+exposeは「公開する」と約されることが多いですが、文の中でかなり日本語として違和感があったり、そもそも意味不明な場合があるためです。
+

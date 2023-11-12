@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 
 import { render } from '@testing-library/react'
 
-import { reducer } from '@/lib/redux/rootReducer'
 import { ReduxState } from '@/lib/redux'
+import { reducer } from '@/lib/redux/rootReducer'
 
 const testStore = (state: Partial<ReduxState>) => {
   return configureStore({
