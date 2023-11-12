@@ -1,16 +1,20 @@
+import {
+  selectDisplay,
+  toggleDisplay,
+  useDispatch,
+  useSelector,
+} from '@/lib/redux'
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Button, Card, CardContent, Grid, useTheme } from '@mui/material'
-import { useState } from 'react'
 import YrichikaXLink from '../atoms/YrichikaXLink'
 
-type DisplayState = 'block' | 'none'
-
 function AboutThisSiteInfo() {
-  // TODO: reduxで、sessionStorageにすること。リロードするたびに出てくるため。
-  const [display, setDisplay] = useState<DisplayState>('block')
+  const dispatch = useDispatch()
+  const display = useSelector(selectDisplay)
   const close = () => {
-    setDisplay('none')
+    dispatch(toggleDisplay())
   }
+
   const theme = useTheme()
   const closeIconColor = theme.palette.grey[700]
   const additionalComment = process.env.NEXT_PUBLIC_ADDITIONAL_COMMENT

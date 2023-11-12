@@ -1,6 +1,8 @@
 /* Instruments */
-import { counterSlice } from './slices'
+import { combineReducers } from '@reduxjs/toolkit'
+import { aboutThisSiteInfoSlice, counterSlice } from './slices'
 
-export const reducer = {
+export const reducer = combineReducers({
   counter: counterSlice.reducer,
-}
+  aboutThisSiteInfo: aboutThisSiteInfoSlice.reducer,
+})
