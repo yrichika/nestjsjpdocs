@@ -39,13 +39,8 @@ function ToggleCodeBlock({ tsSnippet, jsSnippet }: Props) {
           </Button>
         </Grid>
       </Grid>
-      <CodeBlock lang={tsSnippet.lang} sx={toggleCodeBlockDisplay(isTs)}>
-        {tsSnippet.code}
-      </CodeBlock>
-
-      <CodeBlock lang={jsSnippet.lang} sx={toggleCodeBlockDisplay(!isTs)}>
-        {jsSnippet.code}
-      </CodeBlock>
+      <CodeBlock snippet={tsSnippet} sx={toggleCodeBlockDisplay(isTs)} />
+      <CodeBlock snippet={jsSnippet} sx={toggleCodeBlockDisplay(!isTs)} />
     </Box>
   )
 }

@@ -7,7 +7,7 @@ export const listOfContents = [
   { title: 'ステータスコード', id: 'status-code' },
   { title: 'ヘッダ', id: 'headers' },
   { title: 'リダイレクト', id: 'redirection' },
-  { title: 'パラメータ', id: 'route-parameters' },
+  { title: 'ルートパラメータ', id: 'route-parameters' },
   { title: 'サブドメインルーティング', id: 'sub-domain-routing' },
   { title: 'スコープ', id: 'scopes' },
   { title: 'Asynchronicity', id: 'asynchronicity' },

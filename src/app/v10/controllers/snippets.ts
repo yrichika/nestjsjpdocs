@@ -160,3 +160,73 @@ getDocs(@Query('version') version) {
 } 
   `.trim(),
 }
+
+export const tsRouteParametersSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  code: `
+@Get(':id')
+findOne(@Param() params: any): string {
+  console.log(params.id);
+  return \`This action returns a #\${params.id} cat\`;
+}
+  `.trim(),
+}
+
+export const jsRouteParametersSnippet: JsCodeSnippet = {
+  lang: 'js',
+  code: `
+@Get(':id')
+@Bind(Param())
+findOne(params) {
+  console.log(params.id);
+  return \`This action returns a #\${params.id} cat\`;
+}
+  `.trim(),
+}
+
+export const tsRouteParametersNameSpecifiedSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  code: `
+@Get(':id')
+findOne(@Param('id') id: string): string {
+  return \`This action returns a #\${id} cat\`;
+}
+  `.trim(),
+}
+
+export const jsRouteParametersNameSpecifiedSnippet: JsCodeSnippet = {
+  lang: 'js',
+  code: `
+@Get(':id')
+@Bind(Param('id'))
+findOne(id) {
+  return \`This action returns a #\${id} cat\`;
+}
+  `.trim(),
+}
+
+export const controllerHostOptionSnippet: CodeSnippet = {
+  lang: 'js',
+  code: `
+@Controller({ host: 'admin.example.com' })
+export class AdminController {
+  @Get()
+  index(): string {
+    return 'Admin page';
+  }
+}
+  `.trim(),
+}
+
+export const controllerHostOptionParamSnippet: CodeSnippet = {
+  lang: 'js',
+  code: `
+@Controller({ host: ':account.example.com' })
+export class AccountController {
+  @Get()
+  getInfo(@HostParam('account') account: string) {
+    return account;
+  }
+}
+  `.trim(),
+}

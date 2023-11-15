@@ -3,6 +3,7 @@ import CodeBlock from '@/components/atoms/CodeBlock'
 import CodeSpan from '@/components/atoms/CodeSpan'
 import ExternalLink from '@/components/atoms/ExternalLink'
 import Heading from '@/components/atoms/Heading'
+import Hl from '@/components/atoms/Hl'
 import PageFooter from '@/components/atoms/PageFooter'
 import Section from '@/components/atoms/Section'
 import Hint from '@/components/molecules/Hint'
@@ -20,10 +21,14 @@ import TableRequestObjects from './TableRequestObjects'
 import TableResponseManipulationOptions from './TableResponseManipulationOptions'
 import { listOfContents } from './listOfContents'
 import {
+  controllerHostOptionParamSnippet,
+  controllerHostOptionSnippet,
   headerSnippet,
   jsCatsControllerSnippet,
   jsCreateCatHandler,
   jsRequestObjectSnippet,
+  jsRouteParametersNameSpecifiedSnippet,
+  jsRouteParametersSnippet,
   patternMatchingSnippet,
   redirectOverrideSnippet,
   redirectSnippet,
@@ -31,6 +36,8 @@ import {
   tsCatsControllerSnippet,
   tsCreateCatHandler,
   tsRequestObjectSnippet,
+  tsRouteParametersNameSpecifiedSnippet,
+  tsRouteParametersSnippet,
 } from './snippets'
 
 function ControllersPage() {
@@ -305,9 +312,7 @@ function ControllersPage() {
           <CodeSpan>statusCode</CodeSpan>のデフォルト値は
           <CodeSpan>302</CodeSpan>（<CodeSpan>Found</CodeSpan>）です。
         </p>
-        <CodeBlock lang={redirectSnippet.lang}>
-          {redirectSnippet.code}
-        </CodeBlock>
+        <CodeBlock snippet={redirectSnippet} />
         <Hint>
           HTTPステータスコード、またはリダイレクトURLを動的に決定したい場合は、
           <CodeSpan>@nestjs/common</CodeSpan>の
@@ -318,13 +323,91 @@ function ControllersPage() {
           メソッドの戻り値に指定する値によって、<CodeSpan>@Redirect()</CodeSpan>
           に指定した引数の値を上書きすることもできます。例として:{' '}
         </p>
-        <CodeBlock lang={redirectOverrideSnippet.lang}>
-          {redirectOverrideSnippet.code}
-        </CodeBlock>
+        <CodeBlock snippet={redirectOverrideSnippet} />
       </Section>
       <Section>
         <Heading id={listOfContents[8].id} variant="h2">
           {listOfContents[8].title}
+        </Heading>
+        <p>
+          固定のパスが設定されたルートは、リクエストの一部に<b>動的なデータ</b>
+          が入力された場合には機能しません（例：<CodeSpan>GET /cats/1</CodeSpan>
+          で、idが<CodeSpan>1</CodeSpan>
+          のcatを取得する）。ルートに動的なパラメータを受け入れるためには、URLの特定の位置で、パスに
+          <b>パラメータトークン</b>を追加します。下記の例では、
+          <CodeSpan>@Get()</CodeSpan>
+          デコレータにパラメータトークンを指定いています。この方法で宣言されたルートパラメータは、
+          <CodeSpan>@Param()</CodeSpan>
+          デコレータを使用してメソッドの引数に追加することで、アクセスすることができます。
+        </p>
+        <Hint>
+          パラメータを持つ動的なパスは、固定パスの後に宣言する必要があります。
+          こうすることで、動的パスが、固定パスに向けられたトラフィックを妨げないようになります。
+        </Hint>
+        <ToggleCodeBlock
+          tsSnippet={tsRouteParametersSnippet}
+          jsSnippet={jsRouteParametersSnippet}
+        />
+        <p>
+          <CodeSpan>@Param()</CodeSpan> でメソッドの引数（上記の例では{' '}
+          <CodeSpan>params</CodeSpan>
+          ）を修飾することで、ルートパラメータはその引数のオブジェクトのプロパティとして利用できるようになります。上記のコードのように、
+          <CodeSpan>params.id</CodeSpan>と参照して <CodeSpan>id</CodeSpan>
+          パラメータにアクセスできます。また、デコレータにパラメータトークンを指定することで、そのメソッドの引数から、直接パラメータを参照することもできます。
+        </p>
+        <Hint>
+          <CodeSpan>Param</CodeSpan>は<CodeSpan>@nestjs/common</CodeSpan>
+          パッケージからインポートして下さい。
+        </Hint>
+        <ToggleCodeBlock
+          tsSnippet={tsRouteParametersNameSpecifiedSnippet}
+          jsSnippet={jsRouteParametersNameSpecifiedSnippet}
+        />
+      </Section>
+      <Section>
+        <Heading id={listOfContents[9].id} variant="h2">
+          {listOfContents[9].title}
+        </Heading>
+        <p>
+          <CodeSpan>@Controller</CodeSpan> デコレータは{' '}
+          <CodeSpan>host</CodeSpan>
+          オプションを取ることができ、リクエストした
+          ホストが特定の値と一致する必要があります。
+        </p>
+        <CodeBlock snippet={controllerHostOptionSnippet} />
+        <Warning>
+          <Hl>Fastify</Hl>
+          はネストされたルーターをサポートしていないため、サブドメインルーティングを使用する場合は、
+          （デフォルトの）Expressアダプターを代わりに使用する必要があります。
+        </Warning>
+        <p>
+          パス内にトークンを使ったのと同様に、
+          <CodeSpan>host</CodeSpan>
+          オプションは、ホスト名内にトークンを指定して、その位置で動的な値を取得できます。以下は、
+          <CodeSpan>@Controller()</CodeSpan>
+          デコレーターに、ホストパラメータートークンを使用した例です。この方法で宣言されたホストパラメーターは、メソッドの引数に
+          <CodeSpan>@HostParam()</CodeSpan>
+          デコレーターを使用することで、その値にアクセスできます。
+        </p>
+        <CodeBlock snippet={controllerHostOptionParamSnippet} />
+      </Section>
+      <Section>
+        <Heading id={listOfContents[10].id} variant="h2">
+          {listOfContents[10].title}
+        </Heading>
+        <p>
+          異なるプログラミング言語のバックグラウンドから来た人にとって、Nestでは、ほぼすべてのリソースが着信リクエスト全体で共有(シングルトンスコープ)されることは予想外かもしれません。データベースへの接続プール、グローバルステートを持つシングルトンサービスなどがあります。Node.jsはリクエスト/レスポンスのマルチスレッド・ステートレスモデルに従っておらず、各リクエストが別々のスレッドで処理されません。そのため、シングルトンのインスタンスを使用することは、アプリケーションにとって
+          <b>安全です</b>。
+        </p>
+        <p>
+          ただし、例外として、シングルトンではなく、リクエスト単位でのリソースの寿命が望ましいケースとしては、GraphQLアプリケーションでのリクエストごとのキャッシュ、リクエストのトラッキング、またはマルチテナンシーなどがあります。スコープを制御する方法については、
+          <Link href="fundamentals/injection-scopes">こちら</Link>
+          を参照してください。
+        </p>
+      </Section>
+      <Section>
+        <Heading id={listOfContents[11].id} variant="h2">
+          {listOfContents[11].title}
         </Heading>
         <p>TODO:</p>
       </Section>
