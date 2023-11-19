@@ -3,16 +3,17 @@ import { TocItem } from '@/types/TocItem'
 export default function tocItems(): TocItem[] {
   return [
     {
-      section: 'INTRODUCTION',
-      sectionUrl: '',
+      // TODO: chapterじゃなくて、chapterにする
+      chapter: 'INTRODUCTION',
+      chapterUrl: '',
       documents: [],
     },
     {
-      section: 'OVERVIEW',
+      chapter: 'OVERVIEW',
       documents: [
         { title: 'First steps', url: 'first-steps' },
         { title: 'Controllers', url: 'controllers' },
-        // { title: 'Providers', url: 'providers' },
+        { title: 'Providers', url: 'providers' },
         // { title: 'Modules', url: 'modules' },
         // { title: 'Middleware', url: 'middleware' },
         // { title: 'Exception filters', url: 'exception-filters' },
@@ -23,7 +24,7 @@ export default function tocItems(): TocItem[] {
       ],
     },
     // {
-    //   section: 'FUNDAMENTALS',
+    //   chapter: 'FUNDAMENTALS',
     //   documents: [
     //     { title: 'Custom providers', url: 'fundamentals/custom-providers' },
     //     {
@@ -51,7 +52,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'TECHNIQUES',
+    //   chapter: 'TECHNIQUES',
     //   documents: [
     //     { title: 'Configuration', url: 'techniques/configuration' },
     //     { title: 'Database', url: 'techniques/database' },
@@ -76,7 +77,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'SECURITY',
+    //   chapter: 'SECURITY',
     //   documents: [
     //     { title: 'Authentication', url: 'security/authentication' },
     //     { title: 'Authorization', url: 'security/authorization' },
@@ -91,7 +92,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'GRAPHQL',
+    //   chapter: 'GRAPHQL',
     //   documents: [
     //     { title: 'Quick start', url: 'graphql/quick-start' },
     //     { title: 'Resolvers', url: 'graphql/resolvers' },
@@ -115,7 +116,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'WEBSOCKETS',
+    //   chapter: 'WEBSOCKETS',
     //   documents: [
     //     { title: 'Gateways', url: 'websockets/gateways' },
     //     { title: 'Exception filters', url: 'websockets/exception-filters' },
@@ -126,7 +127,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'MICROSERVICES',
+    //   chapter: 'MICROSERVICES',
     //   documents: [
     //     { title: 'Overview', url: 'microservices/overview' },
     //     { title: 'Redis', url: 'microservices/redis' },
@@ -146,12 +147,12 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'STANDALONE APPS',
-    //   sectionUrl: 'standalone-applications',
+    //   chapter: 'STANDALONE APPS',
+    //   chapterUrl: 'standalone-applications',
     //   documents: [],
     // },
     // {
-    //   section: 'CLI',
+    //   chapter: 'CLI',
     //   documents: [
     //     { title: 'Overview', url: 'cli/overview' },
     //     { title: 'Workspaces', url: 'cli/workspaces' },
@@ -161,7 +162,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'OPENAPI',
+    //   chapter: 'OPENAPI',
     //   documents: [
     //     { title: 'Introduction', url: 'openapi/introduction' },
     //     { title: 'Types and Parameters', url: 'openapi/types-and-parameters' },
@@ -175,7 +176,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'RECIPES',
+    //   chapter: 'RECIPES',
     //   documents: [
     //     { title: 'REPL', url: 'recipes/repl' },
     //     { title: 'CRUD generator', url: 'recipes/crud-generator' },
@@ -199,7 +200,7 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'FAQ',
+    //   chapter: 'FAQ',
     //   documents: [
     //     { title: 'Serverless', url: 'faq/serverless' },
     //     { title: 'HTTP adapter', url: 'faq/http-adapter' },
@@ -214,30 +215,30 @@ export default function tocItems(): TocItem[] {
     //   ],
     // },
     // {
-    //   section: 'DEVTOOLS',
+    //   chapter: 'DEVTOOLS',
     //   documents: [
     //     { title: 'Overview', url: 'devtools/overview' },
     //     { title: 'CI/CD integration', url: 'devtools/ci-cd-integration' },
     //   ],
     // },
     // {
-    //   section: 'MIGRATION GUIDE',
-    //   sectionUrl: 'migration-guide',
+    //   chapter: 'MIGRATION GUIDE',
+    //   chapterUrl: 'migration-guide',
     //   documents: [],
     // },
     // {
     //   // TODO: 別タブで開くようにすること
-    //   section: 'OFFICIAL COURSES',
-    //   sectionUrl: 'https://courses.nestjs.com/',
+    //   chapter: 'OFFICIAL COURSES',
+    //   chapterUrl: 'https://courses.nestjs.com/',
     //   documents: [],
     // },
     // {
-    //   section: 'DISCOVER',
+    //   chapter: 'DISCOVER',
     //   documents: [{ title: 'Who is using Nest?', url: 'discover/companies' }],
     // },
     // {
-    //   section: 'SUPPORT US',
-    //   sectionUrl: 'support',
+    //   chapter: 'SUPPORT US',
+    //   chapterUrl: 'support',
     //   documents: [],
     // },
   ]

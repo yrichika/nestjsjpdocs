@@ -39,24 +39,24 @@ function TocNavigation({ versionPrefix }: Props) {
   return (
     <Box style={{ position: 'sticky', top: '10px' }}>
       <List>
-        {tocItems().map((item: TocItem, keySection) => (
-          <ListItem key={keySection} style={{ padding: 0 }}>
+        {tocItems().map((item: TocItem, keyChapter) => (
+          <ListItem key={keyChapter} style={{ padding: 0 }}>
             <Accordion
               style={{ boxShadow: 'none' }}
               defaultExpanded={defaultExpanded(item.documents)}
             >
               {item.documents.length > 0 ? (
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                  <Typography variant="body2">{item.section}</Typography>
+                  <Typography variant="body2">{item.chapter}</Typography>
                 </AccordionSummary>
               ) : (
                 <AccordionSummary>
                   <Typography variant="body2">
                     <Link
-                      href={versionPrefixUrl + item.sectionUrl}
+                      href={versionPrefixUrl + item.chapterUrl}
                       underline="none"
                     >
-                      {item.section}
+                      {item.chapter}
                     </Link>
                   </Typography>
                 </AccordionSummary>

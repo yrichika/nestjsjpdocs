@@ -1,6 +1,6 @@
 export type TocItem = {
-  section: string
-  sectionUrl?: string
+  chapter: string
+  chapterUrl?: string
   documents: Document[]
 }
 
