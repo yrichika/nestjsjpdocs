@@ -25,19 +25,35 @@ import {
   controllerHostOptionSnippet,
   headerSnippet,
   jsCatsControllerSnippet,
+  jsControllerSampleSnippet,
   jsCreateCatHandler,
+  jsDtoSnippet,
+  jsDtoUsageSnippet,
+  jsLibrarySpecificCompatibilitySnippet,
+  jsObservableSnippet,
+  jsPromiseSnippet,
+  jsRegisterToModuleSnippet,
   jsRequestObjectSnippet,
   jsRouteParametersNameSpecifiedSnippet,
   jsRouteParametersSnippet,
+  jsWithResponseObjectSnippet,
   patternMatchingSnippet,
   redirectOverrideSnippet,
   redirectSnippet,
   statusCodeSnippet,
   tsCatsControllerSnippet,
+  tsControllerSampleSnippet,
   tsCreateCatHandler,
+  tsDtoSnippet,
+  tsDtoUsageSnippet,
+  tsLibrarySpecificCompatibilitySnippet,
+  tsObservableSnippet,
+  tsPromiseSnippet,
+  tsRegisterToModuleSnippet,
   tsRequestObjectSnippet,
   tsRouteParametersNameSpecifiedSnippet,
   tsRouteParametersSnippet,
+  tsWithResponseObjectSnippet,
 } from './snippets'
 
 function ControllersPage() {
@@ -409,7 +425,177 @@ function ControllersPage() {
         <Heading id={listOfContents[11].id} variant="h2">
           {listOfContents[11].title}
         </Heading>
-        <p>TODO:</p>
+        <p>
+          私たちはモダンなJavaScriptが好きであり、そしてデータの取り出しは主に
+          <b>非同期</b>です。 そのため、Nestは非同期関数
+          <CodeSpan>async</CodeSpan>をサポートし、それと上手く連携できます。
+        </p>
+        <Hint>
+          <CodeSpan>async / await</CodeSpan>をより詳しく知りたい方は
+          <ExternalLink href="https://kamilmysliwiec.com/typescript-2-1-introduction-async-await">
+            こちら
+          </ExternalLink>
+          を参考にして下さい。
+        </Hint>
+        <ToggleCodeBlock
+          tsSnippet={tsPromiseSnippet}
+          jsSnippet={jsPromiseSnippet}
+        />
+        <p>
+          上記のコードはそのまま動作可能です。それに加えて、Nestのハンドラは、RxJSの
+          <ExternalLink href="https://reactivex.io/rxjs/class/es6/Observable.js~Observable.html">
+            observableストリーム
+          </ExternalLink>
+          を返すことができるため、非常に強力です。
+          Nestはpublish/subscribeモデルのデータソースに自動的にsubscribeし、ストリームが完了したら、最後に発行された値を取得します。
+        </p>
+        <ToggleCodeBlock
+          tsSnippet={tsObservableSnippet}
+          jsSnippet={jsObservableSnippet}
+        />
+        <p>
+          上記の2つの方法はどちらも機能するため、要件に合ったものを選択してください。
+        </p>
+      </Section>
+      <Section>
+        <Heading id={listOfContents[12].id} variant="h2">
+          {listOfContents[12].title}
+        </Heading>
+        {/* WORKING: 以下を翻訳中 */}
+        <p>
+          前述のPOSTハンドラの例では、パラメーターを受け入れていませんでした。これを修正するために、ここに
+          <CodeSpan>@Body()</CodeSpan>デコレーターを追加しましょう。
+        </p>
+        <p>
+          しかし、まず（TypeScriptを使用している場合）、<b>DTO</b>（Data
+          Transfer Object）スキーマを定義する必要があります。
+          DTOは、ネットワーク経由で送信されるデータのオブジェクトです。{' '}
+          <b>TypeScript</b>のインターフェースを使用するか、シンプルな
+          <b>クラス</b>
+          を使用してDTOスキーマを定義できます。以外かもしれませんが、ここではクラスの使用をお勧めしています。なぜなら、クラスはJavaScript
+          ES6標準の一部であり、したがってコンパイルされた後のJavaScriptで、実体として保持されるためです。
+          一方で、TypeScriptのインターフェースはトランスパイル中に削除されるため、Nestはそれらをランタイム中で参照できません。ここには大きな違いがあります。なぜなら、
+          ランタイム中に変数のメタタイプにアクセスできると、<b>Pipes</b>
+          などの機能が使え、さらなる可能性が広がるからです。
+        </p>
+        <p>
+          <CodeSpan>CreateCatDto</CodeSpan>DTOクラスを例で作ってみましょう。
+        </p>
+        <ToggleCodeBlock tsSnippet={tsDtoSnippet} jsSnippet={jsDtoSnippet} />
+        <p>
+          それは三つの基本的なプロパティを持っています。 新しく作成したDTOは
+          <CodeSpan>CatsController</CodeSpan>で使用できます。
+        </p>
+        <ToggleCodeBlock
+          tsSnippet={tsDtoUsageSnippet}
+          jsSnippet={jsDtoUsageSnippet}
+        />
+        <Hint>
+          <CodeSpan>ValidationPipe</CodeSpan>
+          は、ハンドラで受信すべきでないプロパティをフィルタリングできます。この場合、受け入れ可能なプロパティをホワイトリストに登録し、ホワイトリストに含まれていないプロパティは、結果のオブジェクトから自動的に削除されます。
+          <CodeSpan>CreateCatDto</CodeSpan>の例では、ホワイトリストには
+          <CodeSpan>name</CodeSpan>、<CodeSpan>age</CodeSpan>、および
+          <CodeSpan>breed</CodeSpan>のプロパティが含まれています。詳細は
+          <Link href="techniques/validation#stripping-properties">こちら</Link>
+          を参照してください。
+        </Hint>
+      </Section>
+      <Section>
+        <Heading id={listOfContents[13].id} variant="h2">
+          {listOfContents[13].title}
+        </Heading>
+        <p>
+          エラーの処理に関する情報(例外処理など)は、
+          <Link href="exception-filters">こちら</Link>の章で説明しています。
+        </p>
+      </Section>
+      <Section>
+        <Heading id={listOfContents[14].id} variant="h2">
+          {listOfContents[14].title}
+        </Heading>
+        <p>
+          以下は、基本的なデコレータを使用してコントローラを作成する例です。このコントローラは、受信したデータにアクセスし、それを操作するメソッドを公開しています。
+        </p>
+        <ToggleCodeBlock
+          tsSnippet={tsControllerSampleSnippet}
+          jsSnippet={jsControllerSampleSnippet}
+        />
+        <Hint>
+          Nest
+          CLIは、開発者がこれらすべてを行う手間を省くために、自動的にすべての
+          <Hl>ボイラープレートコード</Hl>
+          を生成するジェネレータ（スキーマ）を提供しています。この機能の詳細については、
+          <Link href="recipes/crud-generator">こちら</Link>を読んでください。
+        </Hint>
+      </Section>
+      <Section>
+        <Heading id={listOfContents[15].id} variant="h2">
+          {listOfContents[15].title}
+        </Heading>
+        <p>
+          上記のコントローラが定義されていても、Nestはまだ
+          <CodeSpan>CatsController</CodeSpan>
+          が存在することを知らないため、このクラスのインスタンスを作成しません。
+        </p>
+        <p>
+          コントローラは常にモジュールに属する必要があります。
+          具体的には、コントローラーを使えるようにするには、コントローラークラスを
+          <CodeSpan>@Module()</CodeSpan>
+          デコレータ内の
+          <CodeSpan>controllers</CodeSpan>配列に含めます。 今の段階では、
+          <CodeSpan>src/</CodeSpan>ディレクトリ下のルートにある
+          <CodeSpan>AppModule</CodeSpan>
+          以外のモジュールはまだ定義されていません。そのため、
+          <CodeSpan>AppModule</CodeSpan>を仮で使用して、
+          <CodeSpan>CatsController</CodeSpan>をモジュールに登録します。
+        </p>
+        <ToggleCodeBlock
+          tsSnippet={tsRegisterToModuleSnippet}
+          jsSnippet={jsRegisterToModuleSnippet}
+        />
+        <p>
+          上記のように、<CodeSpan>@Module()</CodeSpan>
+          デコレータを使用してモジュールクラスにメタデータに加えることで、Nestはどのコントローラをマウントするべきか認識することができます。
+        </p>
+      </Section>
+      <Section>
+        <Heading id={listOfContents[16].id} variant="h2">
+          {listOfContents[16].title}
+        </Heading>
+        <p>
+          これまでは、Nestの標準的な方法でレスポンスを操作する方法を説明しました。レスポンスを操作する第2の方法は、ライブラリ固有(expressなど)の
+          <ExternalLink href="https://expressjs.com/en/api.html#res">
+            レスポンスオブジェクト
+          </ExternalLink>
+          を使用することです。特定のレスポンスオブジェクトを注入するためには、
+          <CodeSpan>@Res()</CodeSpan>
+          デコレータを使用する必要があります。違いを示すために、
+          <CodeSpan>CatsController</CodeSpan>
+          を以下のように書き直してみましょう。
+        </p>
+        <ToggleCodeBlock
+          tsSnippet={tsWithResponseObjectSnippet}
+          jsSnippet={jsWithResponseObjectSnippet}
+        />
+
+        <p>
+          このアプローチは機能し、レスポンスオブジェクトを制御することで、確かにいくつかの点で柔軟性を提供します（ヘッダーの操作、ライブラリ固有の機能など）。ただし、注意して使用する必要があります。一般的に、このアプローチはあまり明確ではなく、いくつかの欠点があります。
+          主な欠点は、コードがプラットフォーム依存になることです（基本となるライブラリがレスポンスオブジェクトで異なるAPIを持っている可能性があるため）。そして、テストが難しくなることです（レスポンスオブジェクトをモックする必要があるなど）。
+        </p>
+        <p>
+          また、上記の例では、Nestの機能（Interceptorsや
+          <CodeSpan>@HttpCode()</CodeSpan> / <CodeSpan>@Header()</CodeSpan>
+          デコレータなどの、Nestの標準的なレスポンス処理に依存する機能）との互換性が失われます。これを修正するには、次のように
+          <CodeSpan>passthrough</CodeSpan>オプションを<CodeSpan>true</CodeSpan>
+          に設定してください。
+        </p>
+        <ToggleCodeBlock
+          tsSnippet={tsLibrarySpecificCompatibilitySnippet}
+          jsSnippet={jsLibrarySpecificCompatibilitySnippet}
+        />
+        <p>
+          こうすることで、レスポンスオブジェクトを直接操作しつつ（たとえば、特定の条件に応じてクッキーまたはヘッダーを設定するなど）、残りの部分はフレームワークに任せることができます。
+        </p>
       </Section>
       <PageFooter>
         Translated from{' '}

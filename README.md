@@ -49,6 +49,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ### expose ...
 
-"expose the interface" などの表現は、「インターフェースに直接アクセスできる状態」というような表現で訳しています。
+"expose the interface" などの表現は、「インターフェースに直接アクセスできる状態」や、「外部からアクセス可能」というような表現で訳しています。
 exposeは「公開する」と約されることが多いですが、文の中でかなり日本語として違和感があったり、そもそも意味不明な場合があるためです。
+文脈や意味に違和感がなければ、そのまま「公開する」と訳す場合もあります。
 

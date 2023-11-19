@@ -4,6 +4,8 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 /* Instruments */
 // import { incrementAsync } from './thunks'
 
+// DELETE: サンルプコードのため削除
+
 const initialState: CounterSliceState = {
   value: 0,
   status: 'idle',

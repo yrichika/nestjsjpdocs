@@ -23,11 +23,9 @@ function ToggleCodeBlock({ tsSnippet, jsSnippet }: Props) {
     <Box>
       <Grid container alignItems="center">
         <Grid item>
-          {isTs ? (
-            <CodeSpan>{tsSnippet.filename}</CodeSpan>
-          ) : (
-            <CodeSpan>{jsSnippet.filename}</CodeSpan>
-          )}
+          {isTs
+            ? tsSnippet.filename && <CodeSpan>{tsSnippet.filename}</CodeSpan>
+            : jsSnippet.filename && <CodeSpan>{jsSnippet.filename}</CodeSpan>}
         </Grid>
         <Grid item sx={{ marginLeft: 'auto' }}>
           <Button

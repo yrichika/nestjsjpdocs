@@ -230,3 +230,269 @@ export class AccountController {
 }
   `.trim(),
 }
+
+export const tsPromiseSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'cats.controller.ts',
+  code: `
+@Get()
+async findAll(): Promise<any[]> {
+  return [];
+}
+  `.trim(),
+}
+
+export const jsPromiseSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'cats.controller.js',
+  code: `
+@Get()
+async findAll() {
+  return [];
+}
+  `.trim(),
+}
+
+export const tsObservableSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'cats.controller.ts',
+  code: `
+@Get()
+findAll(): Observable<any[]> {
+  return of([]);
+}
+  `.trim(),
+}
+
+export const jsObservableSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'cats.controller.js',
+  code: `
+@Get()
+findAll() {
+  return of([]);
+}
+  `.trim(),
+}
+
+export const tsDtoSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'cats.controller.ts',
+  code: `
+export class CreateCatDto {
+  name: string;
+  age: number;
+  breed: string;
+}
+  `.trim(),
+}
+
+export const jsDtoSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'cats.controller.js',
+  code: `
+export class CreateCatDto {
+  name: string;
+  age: number;
+  breed: string;
+}
+  `.trim(),
+}
+
+export const tsDtoUsageSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'cats.controller.ts',
+  code: `
+@Post()
+async create(@Body() createCatDto: CreateCatDto) {
+  return 'This action adds a new cat';
+}
+  `.trim(),
+}
+
+export const jsDtoUsageSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'cats.controller.js',
+  code: `
+@Post()
+@Bind(Body())
+async create(createCatDto) {
+  return 'This action adds a new cat';
+}
+  `.trim(),
+}
+
+export const tsControllerSampleSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'cats.controller.ts',
+  code: `
+import { Controller, Get, Query, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { CreateCatDto, UpdateCatDto, ListAllEntities } from './dto';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  create(@Body() createCatDto: CreateCatDto) {
+    return 'This action adds a new cat';
+  }
+
+  @Get()
+  findAll(@Query() query: ListAllEntities) {
+    return \`This action returns all cats (limit: \${query.limit} items)\`;
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return \`This action returns a #\${id} cat\`;
+  }
+
+  @Put(':id')
+  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
+    return \`This action updates a #\${id} cat\`;
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return \`This action removes a #\${id} cat\`;
+  }
+}
+  `.trim(),
+}
+
+export const jsControllerSampleSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'cats.controller.js',
+  code: `
+import { Controller, Get, Query, Post, Body, Put, Param, Delete, Bind } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  @Bind(Body())
+  create(createCatDto) {
+    return 'This action adds a new cat';
+  }
+
+  @Get()
+  @Bind(Query())
+  findAll(query) {
+    console.log(query);
+    return \`This action returns all cats (limit: \${query.limit} items)\`;
+  }
+
+  @Get(':id')
+  @Bind(Param('id'))
+  findOne(id) {
+    return \`This action returns a #\${id} cat\`;
+  }
+
+  @Put(':id')
+  @Bind(Param('id'), Body())
+  update(id, updateCatDto) {
+    return \`This action updates a #\${id} cat\`;
+  }
+
+  @Delete(':id')
+  @Bind(Param('id'))
+  remove(id) {
+    return \`This action removes a #\${id} cat\`;
+  }
+}
+  `.trim(),
+}
+
+export const tsRegisterToModuleSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'app.module.ts',
+  code: `
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats/cats.controller';
+
+@Module({
+  controllers: [CatsController],
+})
+export class AppModule {}
+  `.trim(),
+}
+
+export const jsRegisterToModuleSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'app.module.js',
+  code: `
+import { Module } from '@nestjs/common';
+import { CatsController } from './cats/cats.controller';
+
+@Module({
+  controllers: [CatsController],
+})
+export class AppModule {}
+  `.trim(),
+}
+
+export const tsWithResponseObjectSnippet: TsCodeSnippet = {
+  lang: 'ts',
+  filename: 'cats.controller.ts',
+  code: `
+import { Controller, Get, Post, Res, HttpStatus } from '@nestjs/common';
+import { Response } from 'express';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  create(@Res() res: Response) {
+    res.status(HttpStatus.CREATED).send();
+  }
+
+  @Get()
+  findAll(@Res() res: Response) {
+      res.status(HttpStatus.OK).json([]);
+  }
+}
+  `.trim(),
+}
+
+export const jsWithResponseObjectSnippet: JsCodeSnippet = {
+  lang: 'js',
+  filename: 'cats.controller.js',
+  code: `
+import { Controller, Get, Post, Bind, Res, Body, HttpStatus } from '@nestjs/common';
+
+@Controller('cats')
+export class CatsController {
+  @Post()
+  @Bind(Res(), Body())
+  create(res, createCatDto) {
+    res.status(HttpStatus.CREATED).send();
+  }
+
+  @Get()
+  @Bind(Res())
+  findAll(res) {
+      res.status(HttpStatus.OK).json([]);
+  }
+}
+  `.trim(),
+}
+
+export const tsLibrarySpecificCompatibilitySnippet: TsCodeSnippet = {
+  lang: 'ts',
+  code: `
+@Get()
+findAll(@Res({ passthrough: true }) res: Response) {
+  res.status(HttpStatus.OK);
+  return [];
+}
+  `.trim(),
+}
+
+export const jsLibrarySpecificCompatibilitySnippet: JsCodeSnippet = {
+  lang: 'js',
+  code: `
+@Get()
+@Bind(Res({ passthrough: true }))
+findAll(res) {
+  res.status(HttpStatus.OK);
+  return [];
+}
+  `.trim(),
+}
