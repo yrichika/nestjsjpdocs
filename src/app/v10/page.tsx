@@ -15,19 +15,14 @@ import PageFooter from '@/components/atoms/PageFooter'
 import Section from '@/components/atoms/Section'
 import Hint from '@/components/molecules/Hint'
 import { useEffect } from 'react'
+import { listOfContents } from './listOfContents'
 import {
   installManuallySnippet,
   installSnippet,
   installWithGitSnippet,
 } from './snippets'
 
-function Introduction() {
-  const listOfContents = [
-    { title: 'Introduction', id: 'introduction' },
-    { title: 'Philosophy', id: 'philosophy' },
-    { title: 'Installation', id: 'installation' },
-    { title: 'Alternatives', id: 'alternatives' },
-  ]
+function IntroductionPage() {
   const originalLink = 'https://docs.nestjs.com/'
   const degitLink = 'https://github.com/Rich-Harris/degit'
   const localhostLink = 'http://localhost:3000/'
@@ -151,4 +146,4 @@ function Introduction() {
   )
 }
 
-export default Introduction
+export default IntroductionPage

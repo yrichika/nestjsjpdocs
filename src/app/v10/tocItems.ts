@@ -3,7 +3,6 @@ import { TocItem } from '@/types/TocItem'
 export default function tocItems(): TocItem[] {
   return [
     {
-      // TODO: chapterじゃなくて、chapterにする
       chapter: 'INTRODUCTION',
       chapterUrl: '',
       documents: [],

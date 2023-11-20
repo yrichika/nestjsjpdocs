@@ -10,10 +10,13 @@ export const listOfContents = [
   { title: 'ルートパラメータ', id: 'route-parameters' },
   { title: 'サブドメインルーティング', id: 'sub-domain-routing' },
   { title: 'スコープ', id: 'scopes' },
-  { title: 'Asynchronicity', id: 'asynchronicity' },
+  { title: '非同期処理', id: 'asynchronicity' },
   { title: 'Request payloads', id: 'request-payloads' },
   { title: 'エラー処理', id: 'handling-errors' },
   { title: 'サンプル', id: 'full-resource-sample' },
-  { title: 'Getting up and running', id: 'getting-up-and-running' },
-  { title: 'Library-specific approach', id: 'library-specific-approach' },
+  { title: 'コントローラーを稼働', id: 'getting-up-and-running' },
+  {
+    title: '基盤ライブラリを使った実装アプローチ',
+    id: 'library-specific-approach',
+  },
 ]

@@ -2,7 +2,7 @@
 import { redirect } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default function Home() {
+export default function Top() {
   // TODO: とりあえず最初はリダイレクトにしておく
   useEffect(() => {
     redirect('/v10')

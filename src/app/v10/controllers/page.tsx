@@ -431,7 +431,8 @@ function ControllersPage() {
           <CodeSpan>async</CodeSpan>をサポートし、それと上手く連携できます。
         </p>
         <Hint>
-          <CodeSpan>async / await</CodeSpan>をより詳しく知りたい方は
+          <CodeSpan>async</CodeSpan> / <CodeSpan>await</CodeSpan>
+          をより詳しく知りたい方は
           <ExternalLink href="https://kamilmysliwiec.com/typescript-2-1-introduction-async-await">
             こちら
           </ExternalLink>
@@ -461,7 +462,6 @@ function ControllersPage() {
         <Heading id={listOfContents[12].id} variant="h2">
           {listOfContents[12].title}
         </Heading>
-        {/* WORKING: 以下を翻訳中 */}
         <p>
           前述のPOSTハンドラの例では、パラメーターを受け入れていませんでした。これを修正するために、ここに
           <CodeSpan>@Body()</CodeSpan>デコレーターを追加しましょう。
