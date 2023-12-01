@@ -2,7 +2,7 @@ import { useTheme } from '@mui/material'
 import { ReactNode } from 'react'
 import TipBox from '../atoms/TipBox'
 
-function Hint({ children }: { children: ReactNode }) {
+function Warning({ children }: { children: ReactNode }) {
   const theme2ndColor = useTheme().palette.warning.main
 
   return (
@@ -12,4 +12,4 @@ function Hint({ children }: { children: ReactNode }) {
   )
 }
 
-export default Hint
+export default Warning

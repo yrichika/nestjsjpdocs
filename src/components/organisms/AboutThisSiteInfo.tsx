@@ -32,7 +32,9 @@ function AboutThisSiteInfo() {
           <YrichikaXLink />
           が個人で勝手に翻訳して公開しています。
           <br />
-          {additionalComment}
+          {additionalComment && (
+            <div dangerouslySetInnerHTML={{ __html: additionalComment }} />
+          )}
         </CardContent>
       </Card>
     </Box>

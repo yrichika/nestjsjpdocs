@@ -56,7 +56,7 @@ function MenuBar({ versionPrefix }: Props) {
           </Drawer>
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            TODO: 猫のアイコン
+            TODO: icon
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Link
