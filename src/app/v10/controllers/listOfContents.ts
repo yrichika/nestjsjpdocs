@@ -1,0 +1,22 @@
+export const listOfContents = [
+  { title: 'Controllers', id: 'controllers' },
+  { title: 'ルーティング', id: 'routing' },
+  { title: 'リクエストオブジェクト', id: 'request-object' },
+  { title: 'Resources', id: 'resources' },
+  { title: 'ルートワイルドカード', id: 'route-wildcards' },
+  { title: 'ステータスコード', id: 'status-code' },
+  { title: 'ヘッダ', id: 'headers' },
+  { title: 'リダイレクト', id: 'redirection' },
+  { title: 'ルートパラメータ', id: 'route-parameters' },
+  { title: 'サブドメインルーティング', id: 'sub-domain-routing' },
+  { title: 'スコープ', id: 'scopes' },
+  { title: '非同期処理', id: 'asynchronicity' },
+  { title: 'Request payloads', id: 'request-payloads' },
+  { title: 'エラー処理', id: 'handling-errors' },
+  { title: 'サンプル', id: 'full-resource-sample' },
+  { title: 'コントローラーを稼働', id: 'getting-up-and-running' },
+  {
+    title: '基盤ライブラリを使った実装アプローチ',
+    id: 'library-specific-approach',
+  },
+]

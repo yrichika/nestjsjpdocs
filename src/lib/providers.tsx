@@ -4,8 +4,15 @@
 import { Provider } from 'react-redux'
 
 /* Instruments */
-import { reduxStore } from '@/lib/redux'
+import { persistor, reduxStore } from '@/lib/redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
 export const Providers = (props: React.PropsWithChildren) => {
-  return <Provider store={reduxStore}>{props.children}</Provider>
+  return (
+    <Provider store={reduxStore}>
+      <PersistGate loading={null} persistor={persistor}>
+        {props.children}
+      </PersistGate>
+    </Provider>
+  )
 }

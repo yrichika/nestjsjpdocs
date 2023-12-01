@@ -1,21 +1,45 @@
 /* Core */
-import { configureStore, type ThunkAction, type Action } from '@reduxjs/toolkit'
+import { configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit'
 import {
-  useSelector as useReduxSelector,
   useDispatch as useReduxDispatch,
+  useSelector as useReduxSelector,
   type TypedUseSelectorHook,
 } from 'react-redux'
 
 /* Instruments */
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
+} from 'redux-persist'
+import session from 'redux-persist/lib/storage/session'
 import { reducer } from './rootReducer'
-// import { middleware } from './middleware'
+
+export const rootId = 'root'
+
+const persistConfig = {
+  key: rootId,
+  storage: session,
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer)
 
 export const reduxStore = configureStore({
-  reducer,
-  // middleware: getDefaultMiddleware => {
-  //   return getDefaultMiddleware().concat(middleware)
-  // },
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        // redux-persistでエラーが出ないようにするため
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 })
+export const persistor = persistStore(reduxStore)
 export const useDispatch = () => useReduxDispatch<ReduxDispatch>()
 export const useSelector: TypedUseSelectorHook<ReduxState> = useReduxSelector
 
